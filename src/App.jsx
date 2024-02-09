@@ -14,16 +14,16 @@ function App() {
   /** @type {HTMLFormElement}  */
   let form;
   /** @type {HTMLDivElement}  */
-  let resultSection
+  let resultSection;
   const onSubmit = () => {
     const data = Object.fromEntries(new FormData(form).entries());
     setResult(getCalculImpots(...tranches())(Number(data.annuel_brut), Number(data.nombre_de_mois)));
-    resultSection.scrollIntoView()
+    resultSection.scrollIntoView();
   };
 
   return (
     <>
-      <div class="h-svh bg-green-50 flex justify-center items-center">
+      <div class="h-svh snap-center bg-green-50 flex justify-center items-center">
         <section class="bg-white shadow-lg rounded-lg w-80 p-4 grid gap-6">
           <h2 class="text-xl font-semibold text-slate-800">Mon salaire après impôts</h2>
           <form
@@ -71,7 +71,7 @@ function App() {
         </section>
       </div>
       {result() && (
-        <div ref={resultSection} class="h-svh bg-green-100 flex justify-center items-center">
+        <div ref={resultSection} class="h-svh snap-center bg-green-100 flex justify-center items-center">
           <section class="bg-white rounded-lg shadow-lg w-96 p-4 grid gap-4">
             <h2 class="sr-only">Résultats</h2>
             <p class="text-justify">
@@ -119,7 +119,7 @@ function App() {
         </div>
       )}
 
-      <section class="">
+      <section class="snap-start">
         <h2 class="text-xl">Tranches d'imposition</h2>
         <ul class="list-disc pl-10">
           <For each={tranches()}>
