@@ -1,7 +1,9 @@
 .input {
-    @apply border rounded px-2 py-1 focus:outline-none focus:border-green-400;
+  @apply bg-gray-100 border rounded px-2 py-1;
+  @apply focus:outline-none focus:border-green-400 focus:bg-gray-50;
+  @apply placeholder:text-gray-500;
 }
 
 :root {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }

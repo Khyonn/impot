@@ -23,7 +23,7 @@ function App() {
 
   return (
     <>
-      <div class="h-svh snap-center bg-green-50 flex justify-center items-center">
+      <div class="h-svh snap-center bg-slate-50 flex justify-center items-center relative overflow-hidden isolate after:absolute after:bg-gradient-to-b after:from-green-100 after:to-green-400 after:w-full after:-top-1/2 after:-right-1/2 after:h-[200%] after:rotate-12 after:-z-10">
         <section class="bg-white shadow-lg rounded-lg w-80 p-4 grid gap-6">
           <h2 class="text-xl font-semibold text-slate-800">Mon salaire après impôts</h2>
           <form
@@ -59,19 +59,17 @@ function App() {
                 max="16"
               />
             </div>
-            <div class="sm:col-span-2 flex justify-end">
-              <button
-                class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 active:bg-green-700 active:scale-95 transition"
-                type="submit"
-              >
-                Calculer
-              </button>
-            </div>
+            <button
+              class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 active:bg-green-700 active:scale-95 transition sm:col-span-2"
+              type="submit"
+            >
+              Calculer
+            </button>
           </form>
         </section>
       </div>
       {result() && (
-        <div ref={resultSection} class="h-svh snap-center bg-green-100 flex justify-center items-center">
+        <div ref={resultSection} class="h-svh snap-center bg-slate-100 flex justify-center items-center  relative overflow-hidden isolate after:absolute after:bg-gradient-to-b after:from-green-100 after:to-green-400 after:w-full after:-top-1/2 after:-left-3/4 after:h-[200%] after:-rotate-12 after:-z-10">
           <section class="bg-white rounded-lg shadow-lg w-96 p-4 grid gap-4">
             <h2 class="sr-only">Résultats</h2>
             <p class="text-justify">
