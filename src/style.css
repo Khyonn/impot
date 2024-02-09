@@ -1,3 +1,12 @@
+.whole-screen-height {
+    height: 100vh;
+    height: 100svh;
+}
+
 .input {
-    @apply border rounded px-2 py-1 focus:outline-none focus:border-blue-400;
+    @apply border rounded px-2 py-1 focus:outline-none focus:border-green-400;
+}
+
+:root {
+    scroll-behavior: smooth;
 }
