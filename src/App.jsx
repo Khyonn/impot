@@ -23,7 +23,7 @@ function App() {
 
   return (
     <>
-      <div class="whole-screen-height bg-green-50 flex justify-center items-center">
+      <div class="h-svh bg-green-50 flex justify-center items-center">
         <section class="bg-white shadow-lg rounded-lg w-80 p-4 grid gap-6">
           <h2 class="text-xl font-semibold text-slate-800">Mon salaire après impôts</h2>
           <form
@@ -35,7 +35,7 @@ function App() {
             }}
           >
             <div class="sm:col-span-2 grid gap-1 items-center grid-cols-subgrid">
-              <label for="">Annuel brut</label>
+              <label for="annuel_brut">Annuel brut</label>
               <input
                 id="annuel_brut"
                 name="annuel_brut"
@@ -47,7 +47,7 @@ function App() {
               />
             </div>
             <div class="sm:col-span-2 grid gap-1 items-center grid-cols-subgrid">
-              <label for="">Nombre de mois</label>
+              <label for="nombre_de_mois">Nombre de mois</label>
               <input
                 id="nombre_de_mois"
                 name="nombre_de_mois"
@@ -71,7 +71,7 @@ function App() {
         </section>
       </div>
       {result() && (
-        <div ref={resultSection} class="whole-screen-height bg-green-100 flex justify-center items-center">
+        <div ref={resultSection} class="h-svh bg-green-100 flex justify-center items-center">
           <section class="bg-white rounded-lg shadow-lg w-96 p-4 grid gap-4">
             <h2 class="sr-only">Résultats</h2>
             <p class="text-justify">
