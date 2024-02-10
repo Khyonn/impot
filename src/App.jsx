@@ -23,7 +23,7 @@ function App() {
 
   return (
     <>
-      <div class="h-svh snap-center bg-slate-50 flex justify-center items-center relative overflow-hidden isolate after:absolute after:bg-gradient-to-b after:from-green-100 after:to-green-400 after:w-full after:-top-1/2 after:-right-1/2 after:h-[200%] after:rotate-12 after:-z-10">
+      <div class="h-svh bg-slate-50 flex justify-center items-center relative overflow-hidden isolate after:absolute after:bg-gradient-to-b after:from-green-100 after:to-green-400 after:w-full after:-top-1/2 after:-right-1/2 after:h-[200%] after:rotate-12 after:-z-10">
         <section class="bg-white shadow-lg rounded-lg w-80 p-4 grid gap-6">
           <h2 class="text-xl font-semibold text-slate-800">Mon salaire après impôts</h2>
           <form
@@ -69,7 +69,7 @@ function App() {
         </section>
       </div>
       {result() && (
-        <div ref={resultSection} class="h-svh snap-center bg-slate-100 flex justify-center items-center  relative overflow-hidden isolate after:absolute after:bg-gradient-to-b after:from-green-100 after:to-green-400 after:w-full after:-top-1/2 after:-left-3/4 after:h-[200%] after:-rotate-12 after:-z-10">
+        <div ref={resultSection} class="h-screen bg-slate-100 flex justify-center items-center  relative overflow-hidden isolate after:absolute after:bg-gradient-to-b after:from-green-100 after:to-green-400 after:w-full after:-top-1/2 after:-left-3/4 after:h-[200%] after:-rotate-12 after:-z-10">
           <section class="bg-white rounded-lg shadow-lg w-96 p-4 grid gap-4">
             <h2 class="sr-only">Résultats</h2>
             <p class="text-justify">
@@ -117,7 +117,7 @@ function App() {
         </div>
       )}
 
-      <section class="snap-start">
+      <section>
         <h2 class="text-xl">Tranches d'imposition</h2>
         <ul class="list-disc pl-10">
           <For each={tranches()}>

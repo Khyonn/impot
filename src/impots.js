@@ -18,7 +18,7 @@ export default function getCalculImpots (...tranches) {
             const isFirst = !index;
             const isLast = tranchesAAppliquer.length - 1 === index;
             const lastAmount = isFirst ? 0 : tranchesAAppliquer[index - 1][0];
-            return [(isLast ? annuelNet : max) - lastAmount, pourcentage]
+            return [(isLast ? annuelNet : max) - (lastAmount), pourcentage]
         });
         const impotTotal = montantParTranche.reduce((total, [montant, pourcentage]) => total + (montant * pourcentage / 100), 0)
         const pourcentageDImpotSurLAnnuelNet = impotTotal * 100 / annuelNet
