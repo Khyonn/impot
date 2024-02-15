@@ -20,7 +20,7 @@ function App() {
   return (
     <>
       <div class="h-svh bg-slate-50 flex justify-center items-center relative overflow-hidden isolate after:absolute after:bg-gradient-to-b after:from-green-100 after:to-green-400 after:w-full after:-top-1/2 after:-right-1/2 after:h-[200%] after:rotate-12 after:-z-10">
-        <section class="bg-white shadow-lg rounded-lg p-4 grid gap-4">
+        <section class="bg-white shadow-lg rounded-lg mx-1 p-4 grid gap-4">
           <h2 class="text-lg tall:text-xl font-semibold text-slate-800">Mon salaire réel</h2>
           <ImpotsForm onSubmit={setCalcul} />
         </section>

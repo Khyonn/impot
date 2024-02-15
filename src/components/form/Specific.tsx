@@ -4,7 +4,7 @@ import { FormProps } from "./types";
 export default function SimpleForm(props: FormProps) {
   return (
     <form
-      class="w-96 grid gap-4 grid-cols-2"
+      class="w-full sm:w-96 grid gap-4 grid-cols-2"
       onSubmit={(event) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
