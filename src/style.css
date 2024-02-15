@@ -1,9 +1,18 @@
 .input {
-  @apply bg-gray-100 border rounded px-2 py-1;
+  @apply bg-gray-100 border rounded px-2 py-1 w-full;
   @apply focus:outline-none focus:border-green-400 focus:bg-gray-50;
   @apply placeholder:text-gray-500;
 }
 
 :root {
   scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+
+:root {
+  scrollbar-width: thin;
 }
