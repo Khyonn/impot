@@ -90,7 +90,7 @@ function App() {
         </div>
       )}
 
-      <section class="sr-only">
+      <section classList={{ "sr-only": !calcul() || calcul()?.parametres.annuelBrut !== 42 }}>
         <h2 class="text-lg tall:text-xl font-semibold">Tranches d'imposition</h2>
         <ul class="list-disc pl-10">
           <For each={DEFAULT.tranches}>
