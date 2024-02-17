@@ -12,9 +12,11 @@ export default function ImpotsForm(props: FormProps) {
   const [isSpecific, setIsSpecific] = createSignal(getIsSpecificFromParams());
   createEffect(
     on(getIsSpecificFromParams, (isSpecificNow) => {
-      doTransition(() => {
-        setIsSpecific(isSpecificNow);
-      });
+      if (isSpecific() !== isSpecificNow) {
+        doTransition(() => {
+          setIsSpecific(isSpecificNow);
+        });
+      }
     })
   );
 
