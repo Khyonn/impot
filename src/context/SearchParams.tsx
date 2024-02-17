@@ -67,7 +67,7 @@ export function SearchParamsProvider(props: { children: JSXElement }) {
                 Object.fromEntries(
                   Object.entries(params).map(([paramName, paramValue]) => [
                     paramName,
-                    Array.isArray(paramValue) ? paramValue.map(String) : paramValue,
+                    Array.isArray(paramValue) ? paramValue.map(String) : String(paramValue),
                   ])
                 )
               )
