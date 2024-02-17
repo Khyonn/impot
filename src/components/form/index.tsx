@@ -8,16 +8,14 @@ import type { FormProps } from "./types";
 
 export default function ImpotsForm(props: FormProps) {
   const [params, setParams] = useSearchParams<{ formType: string }>();
-  const [isSpecific, setIsSpecific] = createSignal();
+  const getIsSpecificFromParams = () => params.formType === "specific";
+  const [isSpecific, setIsSpecific] = createSignal(getIsSpecificFromParams());
   createEffect(
-    on(
-      () => params.formType === "specific",
-      (isSpecificNow) => {
-        doTransition(() => {
-          setIsSpecific(isSpecificNow);
-        });
-      }
-    )
+    on(getIsSpecificFromParams, (isSpecificNow) => {
+      doTransition(() => {
+        setIsSpecific(isSpecificNow);
+      });
+    })
   );
 
   return (
