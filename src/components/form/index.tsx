@@ -1,34 +1,23 @@
-import { createEffect, createSignal, on, onCleanup, onMount } from "solid-js";
+import { createEffect, createSignal, on } from "solid-js";
+import { useSearchParams } from "~/context/SearchParams";
+import { doTransition } from "~/helpers/transitions-api";
+
 import SimpleForm from "./Simple";
 import SpecificForm from "./Specific";
-import { FormProps } from "./types";
-
-const doTransition = (callback: () => any) => {
-  if ("startViewTransition" in document && typeof document.startViewTransition === "function") {
-    document.startViewTransition(callback);
-  } else {
-    callback();
-  }
-};
+import type { FormProps } from "./types";
 
 export default function ImpotsForm(props: FormProps) {
-  const [isSpecific, setIsSpecific] = createSignal(new URLSearchParams(location.search).get("formType") === "specific");
-
-  const onUrlChange = () => {
-    doTransition(() => {
-      setIsSpecific(new URLSearchParams(location.search).get("formType") === "specific");
-    });
-  };
-  addEventListener("popstate", onUrlChange);
-
-  onCleanup(() => {
-    removeEventListener("popstate", onUrlChange);
-  });
-
+  const [params, setParams] = useSearchParams<{ formType: string }>();
+  const [isSpecific, setIsSpecific] = createSignal();
   createEffect(
-    on(isSpecific, () => {
-      document.getElementById("annuel_brut")?.focus();
-    })
+    on(
+      () => params.formType === "specific",
+      (isSpecificNow) => {
+        doTransition(() => {
+          setIsSpecific(isSpecificNow);
+        });
+      }
+    )
   );
 
   return (
@@ -39,14 +28,7 @@ export default function ImpotsForm(props: FormProps) {
           class="italic text-slate-400 transition-colors hover:text-slate-500 active:text-slate-600 text-xs relative isolate before:absolute before:-z-10 before:inset-0 before:border-b before:border-b-current before:origin-left before:transition-transform before:scale-x-0 hover:before:scale-x-100"
           onClick={() => {
             doTransition(() => {
-              setIsSpecific((old) => !old);
-              const newURL = new URL(location.href);
-              if (isSpecific()) {
-                newURL.searchParams.set("formType", "specific");
-              } else {
-                newURL.searchParams.delete("formType");
-              }
-              history.pushState(undefined, "", newURL);
+              setParams({ formType: isSpecific() ? undefined : "specific" });
             });
           }}
         >

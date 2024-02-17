@@ -1,5 +1,5 @@
-import calculerImpots from "../../rules/impots";
-import { FormProps } from "./types";
+import calculerImpots from "~/rules/impots";
+import type { FormProps } from "./types";
 
 export default function SimpleForm(props: FormProps) {
   return (

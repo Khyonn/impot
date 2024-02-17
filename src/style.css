@@ -16,3 +16,103 @@
 :root {
   scrollbar-width: thin;
 }
+body {
+  @apply bg-slate-100 dark:bg-slate-800;
+  @apply before:fixed before:-z-10;
+  @apply before:-top-1/2 before:-right-1/2;
+  @apply before:w-full before:h-[200%];
+  @apply before:bg-gradient-to-b before:from-green-100 before:to-green-400;
+  @apply dark:before:from-green-700 dark:before:to-green-800;
+}
+body::before {
+  rotate: 12deg;
+  translate: 0;
+  animation: bg-to-left linear;
+  animation-timeline: scroll();
+}
+
+@keyframes bg-to-left {
+  from {
+    translate: 10%;
+  }
+  to {
+    translate: -75%;
+  }
+}
+
+.btn-scroll-up {
+  @apply fixed right-5 bottom-5;
+  @apply w-12 aspect-square rounded-full;
+  @apply bg-green-500 text-white;
+  @apply hover:bg-green-600 active:bg-green-700;
+  @apply active:scale-95 transition;
+  @apply flex items-center justify-center;
+  @apply text-xl;
+  @apply shadow-xl;
+  animation: btn-appear linear;
+  animation-timeline: scroll();
+}
+
+section {
+  @apply flex justify-center items-center p-2;
+}
+
+@keyframes btn-appear {
+  from {
+    opacity: 0;
+  }
+  45% {
+    opacity: 0;
+  }
+  65% {
+    opacity: 1;
+  }
+}
+
+::view-transition-old(impot-form),
+::view-transition-new(impot-form) {
+  animation-duration: 300ms;
+}
+::view-transition-old(impot-form) {
+  animation-name: toleft;
+}
+::view-transition-new(impot-form) {
+  animation-delay: 100ms;
+  animation-name: fromright;
+}
+
+@keyframes toleft {
+  to {
+    translate: -25% 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fromright {
+  from {
+    translate: 25% 0;
+    opacity: 0;
+  }
+  to {
+    translate: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes toright {
+  to {
+    translate: 25% 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fromleft {
+  from {
+    translate: -25% 0;
+    opacity: 0;
+  }
+  to {
+    translate: 0;
+    opacity: 1;
+  }
+}

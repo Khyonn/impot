@@ -1,7 +1,9 @@
-import calculerImpots, { DEFAULT } from "../../rules/impots";
-import { FormProps } from "./types";
+import { createSignal } from "solid-js";
+import calculerImpots, { DEFAULT } from "~/rules/impots";
+import type { FormProps } from "./types";
 
 export default function SimpleForm(props: FormProps) {
+  const [pouet, setPouet] = createSignal<string>();
   return (
     <form
       class="w-full sm:w-96 grid gap-4 grid-cols-2"
@@ -18,7 +20,16 @@ export default function SimpleForm(props: FormProps) {
     >
       <div class="grid gap-1">
         <label for="annuel_brut">Annuel brut</label>
-        <input autofocus id="annuel_brut" name="annuel_brut" required class="input" type="number" min="1" placeholder="35000" />
+        <input
+          autofocus
+          id="annuel_brut"
+          name="annuel_brut"
+          required
+          class="input"
+          type="number"
+          min="1"
+          placeholder="35000"
+        />
       </div>
       <div class="grid gap-1">
         <label for="nombre_de_mois">Nombre de mois</label>
