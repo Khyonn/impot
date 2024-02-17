@@ -3,7 +3,7 @@ import { createStore, produce, reconcile } from "solid-js/store";
 
 type Primitiv = boolean | string | number;
 
-const SearchContext = createContext<[ReturnType<typeof createStore>[0], (params: Record<string, Primitiv[]>) => void]>([
+const SearchContext = createContext<[ReturnType<typeof createStore>[0], (params: Record<string, Primitiv[] | undefined>) => void]>([
   {},
   () => {},
 ]);
@@ -67,7 +67,7 @@ export function SearchParamsProvider(props: { children: JSXElement }) {
                 Object.fromEntries(
                   Object.entries(params).map(([paramName, paramValue]) => [
                     paramName,
-                    Array.isArray(paramValue) ? paramValue.map(String) : String(paramValue),
+                    paramValue && (Array.isArray(paramValue) ? paramValue.map(String) : String(paramValue)),
                   ])
                 )
               )

@@ -1,9 +1,3 @@
-.input {
-  @apply bg-gray-100 border rounded px-2 py-1 w-full;
-  @apply focus:outline-none focus:border-green-400 focus:bg-gray-50;
-  @apply placeholder:text-gray-500;
-}
-
 :root {
   scroll-behavior: smooth;
 }
@@ -16,6 +10,7 @@
 :root {
   scrollbar-width: thin;
 }
+
 body {
   @apply bg-slate-100 dark:bg-slate-800;
   @apply before:fixed before:-z-10;
@@ -46,19 +41,14 @@ body::before {
   @apply flex items-center justify-center;
   @apply text-xl;
   @apply shadow-xl;
-  animation: btn-appear linear;
+  animation: btn-appear linear both;
   animation-timeline: scroll();
 }
-
-section {
-  @apply flex justify-center items-center p-2;
-}
-
 @keyframes btn-appear {
   from {
     opacity: 0;
   }
-  45% {
+  35% {
     opacity: 0;
   }
   65% {
@@ -66,50 +56,12 @@ section {
   }
 }
 
-::view-transition-old(impot-form),
-::view-transition-new(impot-form) {
-  animation-duration: 300ms;
-}
-::view-transition-old(impot-form) {
-  animation-name: toleft;
-}
-::view-transition-new(impot-form) {
-  animation-delay: 100ms;
-  animation-name: fromright;
+input, .input {
+  @apply bg-gray-100 border rounded px-2 py-1 w-full;
+  @apply focus:outline-none focus:border-green-400 focus:bg-gray-50;
+  @apply placeholder:text-gray-500;
 }
 
-@keyframes toleft {
-  to {
-    translate: -25% 0;
-    opacity: 0;
-  }
-}
-
-@keyframes fromright {
-  from {
-    translate: 25% 0;
-    opacity: 0;
-  }
-  to {
-    translate: 0;
-    opacity: 1;
-  }
-}
-
-@keyframes toright {
-  to {
-    translate: 25% 0;
-    opacity: 0;
-  }
-}
-
-@keyframes fromleft {
-  from {
-    translate: -25% 0;
-    opacity: 0;
-  }
-  to {
-    translate: 0;
-    opacity: 1;
-  }
+section {
+  @apply flex justify-center items-center p-2;
 }

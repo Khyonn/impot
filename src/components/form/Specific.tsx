@@ -1,15 +1,17 @@
-import { createSignal } from "solid-js";
+import { useSearchParams } from "~/context/SearchParams";
 import calculerImpots, { DEFAULT } from "~/rules/impots";
 import type { FormProps } from "./types";
 
-export default function SimpleForm(props: FormProps) {
-  const [pouet, setPouet] = createSignal<string>();
+export default function SpecificForm(props: FormProps) {
+  const [, setParams] = useSearchParams();
+
   return (
     <form
       class="w-full sm:w-96 grid gap-4 grid-cols-2"
       onSubmit={(event) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
+        setParams(Object.fromEntries(new FormData(event.currentTarget)) as Record<string, string>);
         props.onSubmit(
           calculerImpots({
             annuelBrut: Number(formData.get("annuel_brut")),
@@ -20,16 +22,7 @@ export default function SimpleForm(props: FormProps) {
     >
       <div class="grid gap-1">
         <label for="annuel_brut">Annuel brut</label>
-        <input
-          autofocus
-          id="annuel_brut"
-          name="annuel_brut"
-          required
-          class="input"
-          type="number"
-          min="1"
-          placeholder="35000"
-        />
+        <input autofocus id="annuel_brut" name="annuel_brut" required type="number" min="1" placeholder="35000" />
       </div>
       <div class="grid gap-1">
         <label for="nombre_de_mois">Nombre de mois</label>
@@ -38,12 +31,32 @@ export default function SimpleForm(props: FormProps) {
           name="nombre_de_mois"
           value={DEFAULT.nombreDeMois}
           required
-          class="input"
           type="number"
           min="1"
           max="16"
         />
       </div>
+      {import.meta.env.DEV && (
+        <>
+          <div class="grid gap-1">
+            <label for="pourcentage_cotisations_brut_net">Statut</label>
+            <select
+              id="pourcentage_cotisations_brut_net"
+              name="pourcentage_cotisations_brut_net"
+              class="input"
+              required
+            >
+              <option value="22">Non cadre</option>
+              <option value="25" selected>
+                Cadre
+              </option>
+              <option value="11">Fonction publique</option>
+              <option value="45">Profession libérale</option>
+              <option value="51">Portage salarial</option>
+            </select>
+          </div>
+        </>
+      )}
       <div class="col-span-2 flex justify-end">
         <button
           class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 active:bg-green-700 active:scale-95 transition"
