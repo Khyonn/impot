@@ -32,9 +32,6 @@ body::before {
 }
 
 @keyframes bg-to-left {
-  from {
-    translate: 10%;
-  }
   to {
     translate: -75%;
   }
