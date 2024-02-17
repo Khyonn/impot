@@ -31,12 +31,23 @@ export default function App() {
         </div>
       </section>
       {calcul() && (
-        <section ref={resultSection} class="h-screen">
-          <div class="container bg-white rounded-lg shadow-lg p-4 grid gap-4">
-            <h2 class="sr-only">Résultats</h2>
-            <ResultatComplet calcul={calcul()!} />
-          </div>
-        </section>
+        <>
+          <section ref={resultSection} class="h-screen">
+            <div class="container bg-white rounded-lg shadow-lg p-4 grid gap-4">
+              <h2 class="sr-only">Résultats</h2>
+              <ResultatComplet calcul={calcul()!} />
+            </div>
+          </section>
+          <button
+            onClick={() => {
+              calculSection?.scrollIntoView();
+            }}
+            class="btn-scroll-up"
+          >
+            <span aria-hidden>⇧</span>
+            <span class="sr-only">Remonter au calcul</span>
+          </button>
+        </>
       )}
       <section classList={{ "sr-only": !calcul() || calcul()?.parametres.annuelBrut !== 42 }}>
         <h2 class="text-lg tall:text-xl font-semibold">Tranches d'imposition</h2>
@@ -65,16 +76,7 @@ export default function App() {
             Comment calculer votre impôt d'après le barème de l'impôt sur le revenu ?
           </a>
         </em>
-      </section>{" "}
-      <button
-        onClick={() => {
-          calculSection?.scrollIntoView();
-        }}
-        class="btn-scroll-up"
-      >
-        <span aria-hidden>⇧</span>
-        <span class="sr-only">Remonter au calcul</span>
-      </button>
+      </section>
     </>
   );
 }
